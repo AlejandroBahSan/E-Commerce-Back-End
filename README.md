@@ -3,7 +3,6 @@
   ## Table of Contents:
   - #### [Installation](#prerequisites)
   - #### [Usage](#usage)
-  - #### [Schema](#database-schema)
   - #### [Snippets](#code-snippets)
   - #### [Demo](#quick-demo)
   - #### [License](#project-license)
@@ -17,30 +16,43 @@
   
   ### Installation:
   ### You must install the following for this app to function:
-  #### To use this application, you will need to first clone this repository and run an `npm install` in your CLI to install the dependencies that have been loaded   into the JSON files for you. Once this is done, run `node app.js` in your CLI to start the prompts that will walk you through the various tasks you can perform with this application.
+  #### To use this application, you will need to first clone this repository then once you have in your local storage and you've open it in your source-code editor you will need to proceed to create your `.env` file with the following data 
+```
+DB_USER='@your user name' 
+
+DB_PW='@your password' 
+
+DB_NAME='ecommerce_db' - The name for the DataBase for this project
+```
+  
+After this you will need to create the Schema in your MYSQL shell, once you've done this step install your node modules with the following command `npm i` using your CLI and then run the command `npm run seed`  to seed your DataBase, after this you are ready to start your server with the command `npm start` your program will be listening from `Port: 3001` .
+
+Once you've done the last step, you can start using your REST client. For more please watch the following video by clicking on the Google Drive link down below.
+
+[![Google Drive](https://img.shields.io/static/v1?style=for-the-badge&message=Google+Drive&color=4285F4&logo=Google+Drive&logoColor=FFFFFF&label=)](https://drive.google.com/file/d/1fJinlReaaxWZoFXXuIdZSg8X7TNF9MUv/view?usp=sharing)
+
   
 ## Usage:
-Employee Manager is a CLI designed to be able to perform tasks such as verifying employee roles, salaries and managers for each employee, as well as adding new     roles, employees with their respective salaries to the company's enrollment, all done from your CLI, basically an app for managing human resources.
+Internet retail, also known as e-commerce, is the largest sector of the electronics industry, generating an estimated $29 trillion in 2019. E-commerce platforms like Shopify and WooCommerce provide a suite of services to businesses of all sizes. Due to their prevalence, understanding the fundamental architecture of these platforms will benefit you as a full-stack web developer.
 
- 
-  ## Database Schema:
-<a href="https://github.com/AlejandroBahSan/AlejandroBahSan">
-  <img align="center" src="https://github.com/AlejandroBahSan/Employee-TrackerDB/blob/master/Assets/db-reverseEng.jpg"  width="800" height="400"/>
-</a>
 
 ## Code Snippets
 
 <p float="center">
-  <img align="center" src="https://github.com/AlejandroBahSan/Employee-TrackerDB/blob/master/Assets/code-snapshot.png" width="400" height="550" />
-  <img align="right"  src="https://github.com/AlejandroBahSan/Employee-TrackerDB/blob/master/Assets/code-snapshot2.png" width="400" height="550" /> 
+  <img align="center" src="https://github.com/AlejandroBahSan/E-Commerce-BackEnd/blob/master/Assets/Category-Snippet.jpg" width="400" height="550" />
+  <img align="right"  src="https://github.com/AlejandroBahSan/E-Commerce-BackEnd/blob/master/Assets/Product-Snippet.jpg" width="400" height="550" />
+ </p>
  
-</p>
+ <p float="center">
+  <img align="center" src="https://github.com/AlejandroBahSan/E-Commerce-BackEnd/blob/master/Assets/ProductTag-Snippet.jpg" width="400" height="550" />
+  <img align="right"  src="https://github.com/AlejandroBahSan/E-Commerce-BackEnd/blob/master/Assets/Tag-Snippet.jpg" width="400" height="550" />
+ </p>
 
 <p>
  
 ## Quick Demo
- #### Please check the full video clicking this link [Video](https://drive.google.com/file/d/1K7ASIxJZH_R8FCVPOZcz1G8ozCMpJ3ae/view?usp=sharing).
- ![Demo](https://github.com/AlejandroBahSan/Employee-TrackerDB/blob/master/Assets/EmployeeTrackerDemoV.gif)
+ #### [![Google Drive](https://img.shields.io/static/v1?style=for-the-badge&message=Google+Drive&color=4285F4&logo=Google+Drive&logoColor=FFFFFF&label=)](https://drive.google.com/file/d/1fJinlReaaxWZoFXXuIdZSg8X7TNF9MUv/view?usp=sharing) 
+ ![Demo](https://github.com/AlejandroBahSan/E-Commerce-BackEnd/blob/master/Assets/Demo.gif)
 </p>
  
  
@@ -74,11 +86,14 @@ Employee Manager is a CLI designed to be able to perform tasks such as verifying
 * [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 * [NodeJS](https://nodejs.org/)
  
- * Node Packages:
-    * [MySQL](https://www.npmjs.com/package/mysql)
-    * [Inquirer](https://www.npmjs.com/package/inquirer)
-    * [Console.Table](https://www.npmjs.com/package/console.table)
-    * [ASCII-Art-Font](https://www.npmjs.com/package/ascii-art-font)
+ * Dependencies:
+  ```
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.21.7"
+  ```
  
   ## Questions:
   #### Github Profile: AlejandroBahSan
