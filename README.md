@@ -22,7 +22,7 @@ DB_USER='@your user name'
 
 DB_PW='@your password' 
 
-DB_NAME='ecommerce_db' - The name for the Database for this project
+DB_NAME='ecommerce_db' - Database name for this project
 ```
   
 After this you will need to create the Schema in your MYSQL shell, once you've done this step install your node modules with the following command `npm i` using your CLI and then run the command `npm run seed`  to seed your DataBase, after this you are ready to start your server with the command `npm start` your program will be listening from `Port: 3001` .
