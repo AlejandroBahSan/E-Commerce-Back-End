@@ -1,40 +1,43 @@
-const { Model, DataTypes } = require('sequelize');
+const { Model, DataTypes } = require("sequelize"); // Import Sequelize library components
+const sequelize = require("../config/connection"); // Import database connection
 
-const sequelize = require('../config/connection');
+// Define ProductTag class extending Sequelize Model
+class ProductTag extends Model {}
 
-class ProductTag extends Model { }
-
+// Initialize ProductTag model with schema definition
 ProductTag.init(
   {
-    // define columns
+    // Define columns in ProductTag table
     id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true
+      type: DataTypes.INTEGER, // Column type
+      allowNull: false, // Non-nullable
+      primaryKey: true, // Primary Key
+      autoIncrement: true, // Auto-incrementing
     },
     product_id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.INTEGER, // Column type for product ID
       references: {
-        model: 'product',
-        key: 'id'
-      }
+        // Foreign Key reference
+        model: "product", // Reference to Product model
+        key: "id", // Key in Product model to reference
+      },
     },
     tag_id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.INTEGER, // Column type for tag ID
       references: {
-        model: 'tag',
-        key: 'id'
-      }
-    }
+        // Foreign Key reference
+        model: "tag", // Reference to Tag model
+        key: "id", // Key in Tag model to reference
+      },
+    },
   },
   {
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'product_tag',
+    sequelize, // Database connection instance
+    timestamps: false, // No timestamps
+    freezeTableName: true, // Prevent Sequelize from renaming the table
+    underscored: true, // Use underscores instead of camelCasing
+    modelName: "product_tag", // Name of the model
   }
 );
 
-module.exports = ProductTag;
+module.exports = ProductTag; // Export the ProductTag model
