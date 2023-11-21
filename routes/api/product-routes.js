@@ -15,6 +15,20 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/featured", async (req, res) => {
+  try {
+    const featuredProducts = await Product.findAll({
+      where: {
+        featured: true,
+      },
+    });
+    res.json(featuredProducts);
+  } catch (error) {
+    console.error("Error fetching featured products:", error);
+    res.status(500).send(error.message);
+  }
+});
+
 // Get one product by its `id` including associated Category and Tag data
 router.get("/:id", async (req, res) => {
   try {

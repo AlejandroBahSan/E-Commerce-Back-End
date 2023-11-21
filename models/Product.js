@@ -31,6 +31,10 @@ Product.init(
       isNumeric: true, // Validates for numeric values
       defaultValue: 10, // Default value if not provided
     },
+    featured: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
     category_id: {
       type: DataTypes.INTEGER, // Integer type
       references: {
