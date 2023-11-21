@@ -1,51 +1,56 @@
-// import important parts of sequelize library
-const { Model, DataTypes } = require('sequelize');
-// import our database connection from config.js
-const sequelize = require('../config/connection');
+// Import Sequelize library components
+const { Model, DataTypes } = require("sequelize");
+// Import database connection from config.js
+const sequelize = require("../config/connection");
 
-// Initialize Product model (table) by extending off Sequelize's Model class
-class Product extends Model { }
+// Initialize Product model by extending Sequelize's Model class
+class Product extends Model {}
 
-// set up fields and rules for Product model
+// Define schema for Product model
 Product.init(
   {
-    // define columns
+    // Define columns in Product table
     id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true
+      type: DataTypes.INTEGER, // Integer type
+      allowNull: false, // Non-nullable
+      primaryKey: true, // Primary Key
+      autoIncrement: true, // Auto-incrementing
     },
     product_name: {
-      type: DataTypes.STRING,
-      allowNull: false,
+      type: DataTypes.STRING, // String type
+      allowNull: false, // Non-nullable
     },
     price: {
-      type: DataTypes.DECIMAL,
-      allowNull: false,
-      isDecimal: true
+      type: DataTypes.DECIMAL, // Decimal type
+      allowNull: false, // Non-nullable
+      isDecimal: true, // Validates for decimal values
     },
     stock: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      isNumeric: true,
-      defaultValue: 10
+      type: DataTypes.INTEGER, // Integer type
+      allowNull: false, // Non-nullable
+      isNumeric: true, // Validates for numeric values
+      defaultValue: 10, // Default value if not provided
+    },
+    featured: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
     category_id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.INTEGER, // Integer type
       references: {
-        model: 'category',
-        key: 'id'
-      }
-    }
+        // Foreign Key reference to Category model
+        model: "category", // Reference to Category model
+        key: "id", // Key in Category model to reference
+      },
+    },
   },
   {
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'product',
+    sequelize, // Database connection instance
+    timestamps: false, // No timestamps
+    freezeTableName: true, // Prevent Sequelize from renaming the table
+    underscored: true, // Use underscores instead of camelCasing
+    modelName: "product", // Name of the model
   }
 );
 
-module.exports = Product;
+module.exports = Product; // Export the Product model

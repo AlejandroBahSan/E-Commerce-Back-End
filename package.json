@@ -1,5 +1,5 @@
 {
-  "name": "e-commerce-BackEnd",
+  "name": "e-commerce",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -20,7 +20,8 @@
     "nodemon": "^2.0.3"
   },
   "dependencies": {
-    "dotenv": "^8.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.6.0",
     "express": "^4.17.1",
     "morgan": "^1.10.0",
     "mysql2": "^2.1.0",

@@ -1,19 +1,29 @@
-const express = require('express');
-const routes = require('./routes');
-const morgan = require("morgan");
-// import sequelize connection
-const sequelize = require('./config/connection')
+const express = require("express"); // Import Express.js library for server functionality
+const routes = require("./routes"); // Import routes from the routes directory
+const morgan = require("morgan"); // Import Morgan for HTTP request logging
+// Import Sequelize configuration for database connection
+const sequelize = require("./config/connection");
+const adminRoutes = require("./routes/adminRoutes");
 
-const app = express();
-const PORT = process.env.PORT || 3001;
+const app = express(); // Initialize an Express application
+const PORT = process.env.PORT || 3001; // Define server port
+
+app.use("/admin", adminRoutes);
+// Middleware for logging HTTP requests in development mode
 app.use(morgan("dev"));
+// Middleware for parsing JSON bodies in requests
 app.use(express.json());
+// Middleware for parsing URL-encoded bodies in requests
 app.use(express.urlencoded({ extended: true }));
 
+const cors = require("cors");
+app.use(cors());
+
+// Apply imported routes to the Express application
 app.use(routes);
 
-
-// sync sequelize models to the database, then turn on the server
+// Sync Sequelize models to the database, then start the server
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log(`Now listening in port ${PORT}`));
+  // Listen on defined PORT and log when server is running
+  app.listen(PORT, () => console.log(`Now listening on port ${PORT}`));
 });
