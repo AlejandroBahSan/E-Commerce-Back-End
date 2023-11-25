@@ -1,5 +1,7 @@
 const router = require("express").Router();
 const { Product, Category, Tag, ProductTag } = require("../../models");
+const authenticate = require("../user-login/middleware/authenticate");
+const isAdmin = require("../user-login/middleware/isAdmin");
 
 // The `/api/products` endpoint
 
@@ -15,19 +17,45 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/featured", async (req, res) => {
+router.put("/admin/featured/:id", [authenticate, isAdmin], async (req, res) => {
   try {
-    const featuredProducts = await Product.findAll({
-      where: {
-        featured: true,
-      },
-    });
-    res.json(featuredProducts);
-  } catch (error) {
-    console.error("Error fetching featured products:", error);
-    res.status(500).send(error.message);
+    const updatedProduct = await Product.update(
+      { featured: true }, // featured is a boolean attribute in the Product model
+      { where: { id: req.params.id } }
+    );
+
+    if (!updatedProduct) {
+      throw new Error("Product not found or update failed");
+    }
+
+    res.json({ message: "Product successfully added to the featured list" });
+  } catch (err) {
+    res.status(400).json({ message: `Error: ${err.message}` });
   }
 });
+
+router.put(
+  "/admin/remove-featured/:id",
+  [authenticate, isAdmin],
+  async (req, res) => {
+    try {
+      const updatedProduct = await Product.update(
+        { featured: true }, // featured is a boolean attribute in the Product model
+        { where: { id: req.params.id } }
+      );
+
+      if (!updatedProduct) {
+        throw new Error("Product not found or update failed");
+      }
+
+      res.json({
+        message: "The product was successfully removed from the featured list",
+      });
+    } catch (err) {
+      res.status(400).json({ message: `Error: ${err.message}` });
+    }
+  }
+);
 
 // Get one product by its `id` including associated Category and Tag data
 router.get("/:id", async (req, res) => {
