@@ -2,7 +2,6 @@ const seedCategories = require("./category-seeds"); // Import category seeding f
 const seedProducts = require("./product-seeds"); // Import product seeding function
 const seedTags = require("./tag-seeds"); // Import tag seeding function
 const seedProductTags = require("./product-tag-seeds"); // Import product-tag seeding function
-
 const sequelize = require("../config/connection"); // Import Sequelize connection
 
 // Async function to seed all data
